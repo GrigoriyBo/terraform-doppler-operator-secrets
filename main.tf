@@ -35,7 +35,7 @@ resource "kubernetes_manifest" "doppler_secret" {
         type      = each.value["managed_secret_type"]
       }
       resyncSeconds = var.resync_seconds
-      format        = each.value["format"]
+      format        = lookup(each.value, "format", null)
     }
   }
 }
